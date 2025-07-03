@@ -162,14 +162,22 @@
       justify-content: center;
     }
 
-    .envelope::after {
-      content: "open me";
-      position: absolute;
-      bottom: 10px;
-      font-family: 'Pacifico', cursive;
-      font-size: 1.2rem;
-      color: #c2185b;
-    }
+   .envelope::after {
+  content: "open me";
+  position: absolute;
+  bottom: 10px;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  color: #c2185b;
+  animation: sparkle 2s infinite alternate;
+  transition: opacity 0.5s ease;
+}
+
+.envelope.open::after {
+  content: "";
+  opacity: 0;
+}
+
 
     .envelope .flap {
       position: absolute;
