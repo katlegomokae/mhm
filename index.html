@@ -108,6 +108,33 @@
     #reaction {
       margin-top: 2rem;
       font-size: 2rem;
+      position: relative;
+    }
+
+    /* Animation Effects */
+    .heart-jump {
+      animation: jump 1s ease infinite;
+      display: inline-block;
+    }
+
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .heart-explode {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      animation: explode 1.2s ease-out forwards;
+      font-size: 2rem;
+    }
+
+    @keyframes explode {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(3) rotate(720deg); }
     }
   </style>
 </head>
@@ -157,7 +184,8 @@
   <!-- Interactive Section -->
   <section class="interactive">
     <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
-    Would you ever consider us again?    </h2>
+      Would you ever consider us again?
+    </h2>
 
     <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
       <button onclick="yesReaction()" class="yes-btn">YES</button>
@@ -185,12 +213,18 @@
 
     function yesReaction() {
       const reaction = document.getElementById('reaction');
-      reaction.innerHTML = '😊💖 You said YES! You just made my heart explode with joy!';
+      reaction.innerHTML = `
+        <span class="heart-jump">💖</span>
+        <div style="margin-top: 10px;">You said YES! You just made my heart jump for joy! 😊</div>
+      `;
     }
 
     function noReaction() {
       const reaction = document.getElementById('reaction');
-      reaction.innerHTML = '💔💥 My heart just exploded into a million pieces... seriouslyyyyy?????';
+      reaction.innerHTML = `
+        <div class="heart-explode">💔💥💔💥💔💥💔💥</div>
+        <div style="margin-top: 10px;">My heart just exploded into a million pieces... seriouslyyyyy????? 😢</div>
+      `;
     }
   </script>
 
@@ -201,7 +235,7 @@
 
   <!-- Picture Section -->
   <div style="text-align: center; padding-bottom: 2rem;">
-    <img src="katlego.jpg" alt="MEEEEE" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
+    <img src="kat.jpg" alt="MEEEEE" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
   </div>
 
 </body>
