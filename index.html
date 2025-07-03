@@ -73,10 +73,6 @@
       font-size: 0.95rem;
     }
 
-    audio {
-      display: none;
-    }
-
     section.interactive {
       margin: 3rem auto;
       padding: 2rem 1rem;
@@ -110,6 +106,17 @@
       font-size: 2rem;
       position: relative;
     }
+
+    #playBtn {
+      margin-top: 2rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background: #f8bbd0;
+      color: #880e4f;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -121,15 +128,15 @@
       <img src="us.jpg" alt="Usss" />
       <div class="caption">
         <h2>You're My First Love</h2>
-        <p>I never liked anyone before meeting you bro. I still love you bum. It's a shame you don't love me back but heyy, what can i say?
-        <br>That's the only picture i have of us lmao</br>
-      </p>
+        <p>I never liked anyone before meeting you bro. I still love you bum. It's a shame you don't love me back but heyy, what can I say?
+        <br>That's the only picture I have of us lmao</br>
+        </p>
       </div>
     </div>
     <div class="slide">
       <div class="caption">
         <h2>Our Inside Jokes</h2>
-        <p>Nobody gets our sense of humor like we do. Plus being weird with you is my favotite thing to do nigga.</p>
+        <p>Nobody gets our sense of humor like we do. Plus being weird with you is my favorite thing to do nigga.</p>
       </div>
     </div>
     <div class="slide">
@@ -148,71 +155,81 @@
 
   <div class="music-note">
     🎵 Now playing: <em>"All I Want Is You" - Miguel & J. Cole</em>
-    <audio autoplay loop>
-      <source src="Miguel - All I Want Is You (Official Video) ft. J. Cole (1).mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
   </div>
+
+  <button id="playBtn" onclick="playMusic()">🎵 Tap to Play Our Song</button>
+
+  <audio id="bgMusic">
+    <source src="Miguel - All I Want Is You (Official Video) ft. J. Cole (1).mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
 
   <!-- Interactive Section -->
   <section class="interactive">
-  <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
-    🥓 🥑 
-   <br> Would you ever consider us again? </br>
-  </h2>
+    <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
+      🥓 🥑 <br> Would you ever consider us again? </br>
+    </h2>
 
-  <div id="firstButtons" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
-    <button onclick="firstYes()" class="yes-btn">YES</button>
-    <button onclick="noReaction()" class="no-btn">NO</button>
-  </div>
+    <div id="firstButtons" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+      <button onclick="firstYes()" class="yes-btn">YES</button>
+      <button onclick="noReaction()" class="no-btn">NO</button>
+    </div>
 
-  <div id="secondPrompt" style="margin-top: 2rem; display: none;">
-    <p style="font-size: 1.2rem;">Oh fr? like you're not playing? like seriously?</p>
-    <button onclick="finalYes()" class="yes-btn" style="margin-top: 1rem;">YES fr fr</button>
-  </div>
+    <div id="secondPrompt" style="margin-top: 2rem; display: none;">
+      <p style="font-size: 1.2rem;">Oh fr? like you're not playing? like seriously?</p>
+      <button onclick="finalYes()" class="yes-btn" style="margin-top: 1rem;">YES fr fr</button>
+    </div>
 
-  <div id="reaction" style="margin-top: 2rem;"></div>
-</section>
+    <div id="reaction" style="margin-top: 2rem;"></div>
+  </section>
 
-  
   <!-- JavaScript Section -->
   <script>
     let current = 0;
-  const slides = document.querySelectorAll('.slide');
+    const slides = document.querySelectorAll('.slide');
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-  }
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
 
-  setInterval(() => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }, 5000);
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 5000);
 
-  function firstYes() {
-    document.getElementById('firstButtons').style.display = 'none';
-    document.getElementById('secondPrompt').style.display = 'block';
-  }
+    function playMusic() {
+      const audio = document.getElementById('bgMusic');
+      audio.play().then(() => {
+        console.log("Music started");
+      }).catch((err) => {
+        console.log("Play failed:", err);
+      });
+    }
 
-  function finalYes() {
-    document.getElementById('secondPrompt').style.display = 'none';
-    const reaction = document.getElementById('reaction');
-    reaction.innerHTML = `
-      <img src="happy.gif" alt="Happy Heart" style="width: 200px; border-radius: 12px;" />
-      <p style="margin-top: 1rem;">Let's goooo! alr tmb, then i'll know you're serious or just playing with me.</p>
-    `;
-  }
+    function firstYes() {
+      document.getElementById('firstButtons').style.display = 'none';
+      document.getElementById('secondPrompt').style.display = 'block';
+    }
 
-  function noReaction() {
-    document.getElementById('firstButtons').style.display = 'none';
-    const reaction = document.getElementById('reaction');
-    reaction.innerHTML = `
-      <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
-      <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....i miss you though</p>
-    `;
-  }
+    function finalYes() {
+      document.getElementById('secondPrompt').style.display = 'none';
+      const reaction = document.getElementById('reaction');
+      reaction.innerHTML = `
+        <img src="happy.gif" alt="Happy Heart" style="width: 200px; border-radius: 12px;" />
+        <p style="margin-top: 1rem;">Let's goooo! alr tmb, then i'll know you're serious or just playing with me.</p>
+      `;
+    }
+
+    function noReaction() {
+      document.getElementById('firstButtons').style.display = 'none';
+      const reaction = document.getElementById('reaction');
+      reaction.innerHTML = `
+        <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
+        <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....i miss you though</p>
+      `;
+    }
   </script>
 
   <!-- Footer Section -->
