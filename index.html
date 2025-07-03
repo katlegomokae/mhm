@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why We Belong Together 💖</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -76,6 +76,39 @@
     audio {
       display: none;
     }
+
+    section.interactive {
+      margin: 3rem auto;
+      padding: 2rem 1rem;
+      background: #ffeef2;
+      border-top: 3px dashed #ec407a;
+      max-width: 600px;
+      border-radius: 20px;
+    }
+
+    section.interactive button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes-btn {
+      background: #f8bbd0;
+      color: #880e4f;
+    }
+
+    .no-btn {
+      background: #ffcdd2;
+      color: #b71c1c;
+    }
+
+    #reaction {
+      margin-top: 2rem;
+      font-size: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -84,28 +117,28 @@
 
   <div class="carousel-container">
     <div class="slide active">
-      <img src="images/growth.jpg" alt="We Made Each Other Better">
+      <img src="images/growth.jpg" alt="We Made Each Other Better" />
       <div class="caption">
         <h2>You're My First Love</h2>
-<p>I never liked anyone before meeting you nigga just come back to meeeeeeeee!!! i still love you. It's a shame you don't love me back but heyyyy!!</p>      
+        <p>I never liked anyone before meeting you bro just come back to meeeeeeeee!!! I still love you. It's a shame you don't love me back but heyyyy!!</p>
       </div>
     </div>
     <div class="slide">
-      <img src="images/laughter.jpg" alt="Our Inside Jokes">
+      <img src="images/laughter.jpg" alt="Our Inside Jokes" />
       <div class="caption">
         <h2>Our Inside Jokes</h2>
         <p>Nobody gets our sense of humor like we do. That connection is rare and beautiful.</p>
       </div>
     </div>
     <div class="slide">
-      <img src="images/connection.jpg" alt="Real Connection">
+      <img src="images/connection.jpg" alt="Real Connection" />
       <div class="caption">
         <h2>Real Connection</h2>
         <p>What we had was deep and genuine. Not everyone finds that in their lifetime.</p>
       </div>
     </div>
     <div class="slide">
-      <img src="images/return.jpg" alt="We Always Came Back">
+      <img src="images/return.jpg" alt="We Always Came Back" />
       <div class="caption">
         <h2>We Always Came Back</h2>
         <p>Every time, we found each other again. That must mean something worth holding on to.</p>
@@ -114,13 +147,28 @@
   </div>
 
   <div class="music-note">
-    🎵 Now playing: <em>"All I want is you" by Miguel & J-Cole</em>
+    🎵 Now playing: <em>"All I Want Is You" by Miguel & J. Cole</em>
     <audio autoplay loop>
-      <source src="Miguel - All I Want Is You (Official Video) ft. J. Cole (1).mp3" type="audio/mpeg">
+      <source src="Miguel - All I Want Is You (Official Video) ft. J. Cole (1).mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
   </div>
 
+  <!-- Interactive Section -->
+  <section class="interactive">
+    <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
+      get back tg with me?
+    </h2>
+
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+      <button onclick="yesReaction()" class="yes-btn">YES</button>
+      <button onclick="noReaction()" class="no-btn">NO</button>
+    </div>
+
+    <div id="reaction"></div>
+  </section>
+
+  <!-- JavaScript Section -->
   <script>
     let current = 0;
     const slides = document.querySelectorAll('.slide');
@@ -135,12 +183,27 @@
       current = (current + 1) % slides.length;
       showSlide(current);
     }, 5000);
+
+    function yesReaction() {
+      const reaction = document.getElementById('reaction');
+      reaction.innerHTML = '😊💖 You said YES! You just made my heart explode with joy!';
+    }
+
+    function noReaction() {
+      const reaction = document.getElementById('reaction');
+      reaction.innerHTML = '💔💥 My heart just exploded into a million pieces... seriouslyyyyy?????';
+    }
   </script>
+
+  <!-- Footer Section -->
   <footer style="margin-top: 3rem; padding: 2rem 1rem; background: #ffe4e1; color: #a14a5c; font-size: 0.9rem;">
-  <p>Website lovingly crafted by <strong>katlegomokae</strong> ❤️</p>
-</footer>
-<div style="text-align: center; padding-bottom: 2rem;">
-  <img src="katlego.jpg" alt="MEEEEE" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
-</div>
+    <p>Website lovingly crafted by <strong>katlegomokae</strong> ❤️</p>
+  </footer>
+
+  <!-- Picture Section -->
+  <div style="text-align: center; padding-bottom: 2rem;">
+    <img src="katlego.jpg" alt="MEEEEE" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
+  </div>
+
 </body>
 </html>
