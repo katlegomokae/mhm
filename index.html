@@ -154,49 +154,62 @@
 
   <!-- Interactive Section -->
   <section class="interactive">
-    <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
-      Would you ever consider us again?
-    </h2>
+  <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
+    Would you ever consider us again?
+  </h2>
 
-    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
-      <button onclick="yesReaction()" class="yes-btn">YES</button>
-      <button onclick="noReaction()" class="no-btn">NO</button>
-    </div>
+  <div id="firstButtons" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+    <button onclick="firstYes()" class="yes-btn">YES</button>
+    <button onclick="noReaction()" class="no-btn">NO</button>
+  </div>
 
-    <div id="reaction"></div>
-  </section>
+  <div id="secondPrompt" style="margin-top: 2rem; display: none;">
+    <p style="font-size: 1.2rem;">Oh fr? like you're not playing? like seriously?</p>
+    <button onclick="finalYes()" class="yes-btn" style="margin-top: 1rem;">YES fr fr</button>
+  </div>
 
+  <div id="reaction" style="margin-top: 2rem;"></div>
+</section>
+
+  
   <!-- JavaScript Section -->
   <script>
     let current = 0;
-    const slides = document.querySelectorAll('.slide');
+  const slides = document.querySelectorAll('.slide');
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
 
-    setInterval(() => {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }, 5000);
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 5000);
 
-    function yesReaction() {
-      const reaction = document.getElementById('reaction');
-      reaction.innerHTML = `
-        <img src="happy.gif" alt="Happy Heart" style="width: 200px; border-radius: 12px;" />
-        <p style="margin-top: 1rem;">Let's GOOOOOO! Okay tmb.</p>
-      `;
-    }
+  function firstYes() {
+    document.getElementById('firstButtons').style.display = 'none';
+    document.getElementById('secondPrompt').style.display = 'block';
+  }
 
-    function noReaction() {
-      const reaction = document.getElementById('reaction');
-      reaction.innerHTML = `
-        <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
-        <p style="margin-top: 1rem;">Ohhh you're done fr? damn, sucks to be me, oh well...</p>
-      `;
-    }
+  function finalYes() {
+    document.getElementById('secondPrompt').style.display = 'none';
+    const reaction = document.getElementById('reaction');
+    reaction.innerHTML = `
+      <img src="happy.gif" alt="Happy Heart" style="width: 200px; border-radius: 12px;" />
+      <p style="margin-top: 1rem;">Let's goooo! alr tmb, then i'll know you're serious or just playing with me.</p>
+    `;
+  }
+
+  function noReaction() {
+    document.getElementById('firstButtons').style.display = 'none';
+    const reaction = document.getElementById('reaction');
+    reaction.innerHTML = `
+      <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
+      <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....</p>
+    `;
+  }
   </script>
 
   <!-- Footer Section -->
