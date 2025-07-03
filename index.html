@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
   <style>
-   body {
+     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
@@ -157,6 +157,18 @@
       transform-style: preserve-3d;
       transition: transform 1s;
       cursor: pointer;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .envelope::after {
+      content: "open me";
+      position: absolute;
+      bottom: 10px;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.2rem;
+      color: #c2185b;
     }
 
     .envelope .flap {
