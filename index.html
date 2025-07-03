@@ -117,6 +117,25 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
+    .envelope-box {
+      background: #fff0f5;
+      border: 2px solid #f8bbd0;
+      border-radius: 20px;
+      padding: 1.5rem;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      font-size: 2rem;
+      color: #d81b60;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-family: 'Pacifico', cursive;
+    }
+
+    .envelope-message {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: #c2185b;
+    }
   </style>
 </head>
 <body>
@@ -167,11 +186,13 @@
 
   <!-- Interactive Section -->
   <section class="interactive">
-    <h2 style="font-family: 'Pacifico', cursive; color: #d81b60; font-size: 2rem;">
-      🥓 🥑 <br> Would you ever consider us again? </br>
-    </h2>
 
-    <div id="firstButtons" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+    <div class="envelope-box">
+      💌
+      <p class="envelope-message">Would you ever consider us again?</p>
+    </div>
+
+    <div id="firstButtons" style="display: flex; justify-content: center; gap: 2rem;">
       <button onclick="firstYes()" class="yes-btn">YES</button>
       <button onclick="noReaction()" class="no-btn">NO</button>
     </div>
@@ -239,7 +260,7 @@
       reaction.innerHTML = `
         <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
         <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....I miss you, but I'm done bothering you.
-        <br> also you saw two of my missed calls and didn't cmb, mannn you're really done with me huh</br </p>
+        <br> also you saw two of my missed calls and didn't cmb, mannn you're really done with me huh</br></p>
       `;
     }
   </script>
