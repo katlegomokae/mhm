@@ -7,14 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
   <style>
-    .image-banner img {
-    width: 100%;
-    height: auto;
-    max-height: 800px; /* adjust as needed */
-    object-fit: cover;
-    display: block;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -115,7 +107,7 @@
       position: relative;
     }
 
-    #playBtn {
+    #playBtn, #playOpusBtn {
       margin-top: 2rem;
       padding: 0.7rem 1.5rem;
       font-size: 1rem;
@@ -128,10 +120,6 @@
   </style>
 </head>
 <body>
-  <div class="image-banner">
-  <img src="me.webp" alt="me">
-
-</div>
 
   <h1>Reasons Why We Should Get Back Together 💫</h1>
 
@@ -140,9 +128,7 @@
       <img src="us.jpg" alt="Usss" />
       <div class="caption">
         <h2>You're My First Love</h2>
-        <p>I never liked anyone before meeting you bro. I still love you bum. It's a shame you don't love me back but heyy, what can I say?
-        <br>That's the only picture I have of us lmao</br>
-        </p>
+        <p>I never liked anyone before meeting you bro. I still love you bum. It's a shame you don't love me back but heyy, what can I say?<br>That's the only picture I have of us lmao</p>
       </div>
     </div>
     <div class="slide">
@@ -165,12 +151,11 @@
     </div>
   </div>
 
+  <!-- MP3 Song -->
   <div class="music-note">
     🎵 Now playing: <em>"While We're Young" - Jhene Aiko</em>
   </div>
-
   <button id="playBtn" onclick="playMusic()">🎵 Tap to Play "Our?" Song</button>
-
   <audio id="bgMusic">
     <source src="Jhene Aiko - While We're Young (Lyrics).mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
@@ -193,9 +178,18 @@
     </div>
 
     <div id="reaction" style="margin-top: 2rem;"></div>
+
+    <!-- OPUS file section -->
+    <div id="extraAudio" style="margin-top: 2rem;">
+      <p style="font-size: 1rem; color: #880e4f;"> I REALLY THOUGHT THIS WHOLE TALK WAS YOU BRINGING OUT THE LOVER BOY IN YOU FOR US TO MAKE TS WORK 4LIFE.</p>
+      <button onclick="playOpus()" id="playOpusBtn">Click To Play.</button>
+      <audio id="opusAudio">
+        <source src="LLM'S LIES.opus" type="audio/ogg; codecs=opus" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   </section>
 
-  <!-- JavaScript Section -->
   <script>
     let current = 0;
     const slides = document.querySelectorAll('.slide');
@@ -213,11 +207,12 @@
 
     function playMusic() {
       const audio = document.getElementById('bgMusic');
-      audio.play().then(() => {
-        console.log("Music started");
-      }).catch((err) => {
-        console.log("Play failed:", err);
-      });
+      audio.play().catch(err => console.log("MP3 Play error:", err));
+    }
+
+    function playOpus() {
+      const audio = document.getElementById('opusAudio');
+      audio.play().catch(err => console.log("Opus Play error:", err));
     }
 
     function firstYes() {
@@ -230,7 +225,7 @@
       const reaction = document.getElementById('reaction');
       reaction.innerHTML = `
         <img src="happy.gif" alt="Happy Heart" style="width: 200px; border-radius: 12px;" />
-        <p style="margin-top: 1rem;">Let's goooo! alr tmb, then i'll know you're serious or just playing with me. I'll answer this time, i was brushing my teeth, then had a journaling session when you called on Sunday</p>
+        <p style="margin-top: 1rem;">Let's goooo! alr tmb, then i'll know you're serious or just playing with me. I'll answer this time, I was brushing my teeth, then had a journaling session when you called on Sunday</p>
       `;
     }
 
@@ -239,17 +234,15 @@
       const reaction = document.getElementById('reaction');
       reaction.innerHTML = `
         <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
-        <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....i miss you, but i'm done bothering you.</p>
+        <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....I miss you, but I'm done bothering you.</p>
       `;
     }
   </script>
 
-  <!-- Footer Section -->
   <footer style="margin-top: 3rem; padding: 2rem 1rem; background: #ffe4e1; color: #a14a5c; font-size: 0.9rem;">
     <p>Website lovingly crafted by <strong>me fuh niggaaaaa</strong> ❤️</p>
   </footer>
 
-  <!-- Picture Section -->
   <div style="text-align: center; padding-bottom: 2rem;">
     <img src="kat.jpg" alt="MEEEEE" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
   </div>
