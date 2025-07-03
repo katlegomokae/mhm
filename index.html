@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,6 +13,28 @@
       background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
       color: #444;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.imgur.com/O4VQzYL.png'), url('https://i.imgur.com/2LJJ4Lb.png'); /* Hearts and roses */
+      background-repeat: repeat;
+      background-size: 100px, 120px;
+      background-position: center top;
+      opacity: 0.15;
+      z-index: -1;
+      animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+      0% { background-position-y: 0, 0; }
+      100% { background-position-y: 1000px, 1000px; }
     }
 
     h1 {
@@ -118,60 +140,91 @@
       cursor: pointer;
     }
 
-    .envelope-box {
-      background: #fff0f5;
-      border: 2px solid #f8bbd0;
-      border-radius: 20px;
-      padding: 1.5rem;
-      max-width: 400px;
-      margin: 0 auto 2rem;
-      font-size: 2rem;
-      color: #d81b60;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      font-family: 'Pacifico', cursive;
+    /* Envelope animation */
+    .envelope-container {
+      perspective: 1000px;
+      width: 300px;
+      margin: 2rem auto;
     }
 
-    .envelope-message {
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      background: #fff;
+      border: 2px solid #f8bbd0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      cursor: pointer;
+    }
+
+    .envelope .flap {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background: #f8bbd0;
+      top: 0;
+      left: 0;
+      transform-origin: bottom;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      backface-visibility: hidden;
+      z-index: 2;
+      transition: transform 1s;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .envelope .message {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Pacifico', cursive;
       font-size: 1.5rem;
-      margin-top: 1rem;
       color: #c2185b;
+      opacity: 0;
+      transition: opacity 0.5s 0.5s;
+    }
+
+    .envelope.open .message {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <h1>Reasons Why We Should Get Back Together 💫
-  <br>
-    I know you hate my guts btw, but i'm sorry, every single song is about you.😔🙏🏽
-  </br>
-  </h1>
+  <h1>Reasons Why We Should Get Back Together 💫<br>I know you hate my guts btw, but i'm sorry, every single song is about you.😔🙏🏽</br></h1>
 
-  <div class="carousel-container">
-    <div class="slide active">
-      <img src="us.jpg" alt="Usss" />
-      <div class="caption">
-        <h2>You're My First Love</h2>
-        <p>I never liked anyone before meeting you bro. I still love you bum. It's a shame you don't love me back but heyy, what can I say?<br>That's the only picture I have of us lmao</p>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="caption">
-        <h2>Our Inside Jokes</h2>
-        <p>Nobody gets our sense of humor like we do. Plus being weird with you is my favorite thing to do nigga.</p>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="caption">
-        <h2>Real Connection</h2>
-        <p>What we had was really cool, well we tried to make it cool. Not everyone finds that in their lifetime.</p>
-      </div>
-    </div>
-    <div class="slide">
-      <div class="caption">
-        <h2>We Always Came Back</h2>
-        <p>Every time, we found each other again. That must mean something worth holding on to. No?</p>
-      </div>
-    </div>
+  <div class="carousel-container">     
+    <div class="slide active">  <img src="us.jpg" alt="Usss" />      
+      <div class="caption">         
+        <h2>You're My First Love</h2>         
+        <p>I never liked anyone before meeting you bro. I still love you bum. It's a shame you don't love me back but heyy, what can I say?<br>That's the only picture I have of us lmao</p>  
+      </div>     
+    </div>     
+    <div class="slide">       
+      <div class="caption">         
+        <h2>Our Inside Jokes</h2>         
+        <p>Nobody gets our sense of humor like we do. Plus being weird with you is my favorite thing to do nigga.</p>       
+      </div>    
+    </div>    
+    <div class="slide">      
+      <div class="caption">        
+        <h2>Real Connection</h2>        
+        <p>What we had was really cool, well we tried to make it cool. Not everyone finds that in their lifetime.</p>       
+      </div>     
+    </div>     
+    <div class="slide">      
+      <div class="caption">        
+        <h2>We Always Came Back</h2>      
+        <p>Every time, we found each other again. That must mean something worth holding on to. No?</p>       
+      </div>     
+    </div>  
   </div>
 
   <!-- MP3 Song -->
@@ -181,18 +234,19 @@
   <button id="playBtn" onclick="playMusic()">🎵 Tap to Play "Our?" Song</button>
   <audio id="bgMusic">
     <source src="Jhene Aiko - While We're Young (Lyrics).mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
 
   <!-- Interactive Section -->
   <section class="interactive">
-
-    <div class="envelope-box">
-      💌
-      <p class="envelope-message">Would you ever consider us again?</p>
+    <!-- Envelope Start -->
+    <div class="envelope-container">
+      <div class="envelope" onclick="openEnvelope(this)">
+        <div class="flap">💌</div>
+        <div class="message">Would you ever consider us again?</div>
+      </div>
     </div>
 
-    <div id="firstButtons" style="display: flex; justify-content: center; gap: 2rem;">
+    <div id="firstButtons" style="display: none; justify-content: center; gap: 2rem; margin-top: 2rem;">
       <button onclick="firstYes()" class="yes-btn">YES</button>
       <button onclick="noReaction()" class="no-btn">NO</button>
     </div>
@@ -210,7 +264,6 @@
       <button onclick="playOpus()" id="playOpusBtn">Click To Play.</button>
       <audio id="opusAudio">
         <source src="LLM'S-LIES.opus" type="audio/ogg; codecs=opus" />
-        Your browser does not support the audio element.
       </audio>
     </div>
   </section>
@@ -240,6 +293,13 @@
       audio.play().catch(err => console.log("Opus Play error:", err));
     }
 
+    function openEnvelope(el) {
+      el.classList.add('open');
+      setTimeout(() => {
+        document.getElementById('firstButtons').style.display = 'flex';
+      }, 800);
+    }
+
     function firstYes() {
       document.getElementById('firstButtons').style.display = 'none';
       document.getElementById('secondPrompt').style.display = 'block';
@@ -259,8 +319,7 @@
       const reaction = document.getElementById('reaction');
       reaction.innerHTML = `
         <img src="broken-heart-my-heart-is.gif" alt="Heart Explosion" style="width: 200px;" />
-        <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....I miss you, but I'm done bothering you.
-        <br> also you saw two of my missed calls and didn't cmb, mannn you're really done with me huh</br></p>
+        <p style="margin-top: 1rem;">damnnn. fr? sucks to be me, oh well....I miss you, but I'm done bothering you.<br> also you saw two of my missed calls and didn't cmb, mannn you're really done with me huh</br></p>
       `;
     }
   </script>
