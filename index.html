@@ -110,32 +110,6 @@
       font-size: 2rem;
       position: relative;
     }
-
-    /* Animation Effects */
-    .heart-jump {
-      animation: jump 1s ease infinite;
-      display: inline-block;
-    }
-
-    @keyframes jump {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
-    }
-
-    .heart-explode {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      animation: explode 1.2s ease-out forwards;
-      font-size: 2rem;
-    }
-
-    @keyframes explode {
-      0% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(3) rotate(720deg); }
-    }
   </style>
 </head>
 <body>
@@ -214,16 +188,16 @@
     function yesReaction() {
       const reaction = document.getElementById('reaction');
       reaction.innerHTML = `
-        <span class="heart-jump">💖</span>
-        <div style="margin-top: 10px;">You said YES! You just made my heart jump for joy! 😊</div>
+        <img src="images/happy-heart.gif" alt="Happy Heart" style="width: 200px; border-radius: 12px;" />
+        <p style="margin-top: 1rem;">You said YES! My heart is literally dancing! 💖</p>
       `;
     }
 
     function noReaction() {
       const reaction = document.getElementById('reaction');
       reaction.innerHTML = `
-        <div class="heart-explode">💔💥💔💥💔💥💔💥</div>
-        <div style="margin-top: 10px;">My heart just exploded into a million pieces... seriouslyyyyy????? 😢</div>
+        <img src="images/exploding-heart.gif" alt="Heart Explosion" style="width: 200px;" />
+        <p style="margin-top: 1rem;">Ouch... My heart just exploded into pieces 💔</p>
       `;
     }
   </script>
