@@ -163,22 +163,21 @@
       justify-content: center;
     }
 
-   .envelope::after {
-  content: "open me";
-  position: absolute;
-  bottom: 10px;
-  font-family: 'Pacifico', cursive;
-  font-size: 1.2rem;
-  color: #c2185b;
-  animation: sparkle 2s infinite alternate;
-  transition: opacity 0.5s ease;
-}
+    .envelope::after {
+      content: "open me";
+      position: absolute;
+      bottom: 10px;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.2rem;
+      color: #c2185b;
+      animation: sparkle 2s infinite alternate;
+      transition: opacity 0.5s ease;
+    }
 
-.envelope.open::after {
-  content: "";
-  opacity: 0;
-}
-
+    .envelope.open::after {
+      content: "";
+      opacity: 0;
+    }
 
     .envelope .flap {
       position: absolute;
@@ -242,14 +241,29 @@
       width: 24px;
       height: 24px;
     }
+
+    /* New style for the cursive bottom-right text */
+    .bottom-corner-text {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      font-family: 'Pacifico', cursive;
+      color: #c2185b;
+      font-size: 1.5rem;
+      opacity: 0.9;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
-  
+
   <footer style="margin-top: 3rem; padding: 2rem 1rem; background: #ffe4e1; color: #a14a5c; font-size: 0.9rem;">
-</br> </p>
+    <br>
+    <h2><p>maybe in another life i'm enough for you to actually stay and change</p></h2>
   </footer>
 
- 
+  <!-- The "always and forever" text -->
+  <div class="bottom-corner-text">always and forever</div>
+
 </body>
 </html>
